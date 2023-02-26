@@ -1,13 +1,8 @@
 #!/bin/bash
 #shellcheck shell=bash external-sources=false disable=SC1090,SC2164
-# DOCKER-INSTALL.SH -- Installation script for the Docker infrastructure on a Raspbian or Ubuntu system
-# Usage: source <(curl -s https://raw.githubusercontent.com/wandering-andy/docker-install/dev/docker-install.sh)
+# install-docker.sh -- docker & docker-compse installation plus Raspbian or Ubuntu based server prep
+# Usage: curl -s https://raw.githubusercontent.com/wandering-andy/docker-install/dev/docker-install.sh | sh
 #
-# Copyright 2021, 2022, Ramon F. Kolb (kx1t)- licensed under the terms and conditions
-# of the MIT license. The terms and conditions of this license are included with the Github
-# distribution of this package.
-
-
 if [[ "$EUID" == 0 ]]; then
     echo "STOP -- you are running this as an account with superuser privileges (ie: root), but should not be. It is best practice to NOT install Docker services as \"root\"."
     echo "Instead please log out from this account, log in as a different non-superuser account, and rerun this script."
