@@ -46,11 +46,11 @@ else
     echo "Installing docker, each step may take a while:"
     echo -n "Updating repositories... "
     sudo apt-get update -qq -y >/dev/null && sudo apt-get upgrade -q -y
-    echo -n "Installing packages... "
+    echo -n "Installing docker... "
     # sudo apt-get install -qq -y curl uidmap slirp4netns apt-transport-https ca-certificates curl gnupg2 software-properties-common w3m >/dev/null
-    # sudo apt-get install -qq -y docker >/dev/null
+    sudo apt-get install -qq -y docker >/dev/null
     # Bonus of keeping the script install is it's already agnostic
-    sudo sh get-docker.sh
+    # sudo sh get-docker.sh
     echo "Docker installed -- configuring docker..."
     sudo usermod -aG docker "${USER}"
     sudo mkdir -p /etc/docker
