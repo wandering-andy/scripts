@@ -52,6 +52,13 @@ else
     # Bonus of keeping the script install is it's already agnostic
     # sudo sh get-docker.sh
     echo "Docker installed -- configuring docker..."
+    if grep -q docker /etc/group
+    then
+         echo "docker group already exists."
+    else
+         echo "Creating docker group..."
+         sudo groupadd docker
+    fi
     sudo usermod -aG docker "${USER}"
     sudo mkdir -p /etc/docker
     sudo chmod a+rwx /etc/docker
