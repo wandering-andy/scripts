@@ -112,48 +112,12 @@ else
     echo "alias docker-compose=\"docker compose\"" >> ~/.bash_aliases
     source ~/.bash_aliases
 
-    # old way -- install it manually from the repo. No longer recommended (but it should still work)
-    #            also - this was hard-pegged against a specific docker-compose version and needed manual changes to the script
-    #            to configure newer releases.
-    #
-    # # Do a bunch of prep work
-    # DC_ARCHS=("darwin-aarch64")
-    # DC_ARCHS+=("darwin-x86_64")
-    # DC_ARCHS+=("linux-aarch64")
-    # DC_ARCHS+=("linux-armv6")
-    # DC_ARCHS+=("linux-armv7")
-    # DC_ARCHS+=("linux-s390x")
-    # DC_ARCHS+=("linux-x86_64")
-    #
-    # OS_NAME="$(uname -s)"
-    # OS_NAME="${OS_NAME,,}"
-    # ARCH_NAME="$(uname -m)"
-    # ARCH_NAME="${ARCH_NAME,,}"
-    # [[ "${ARCH_NAME:0:5}" == "armv6" ]] && ARCH_NAME="armv6"
-    # [[ "${ARCH_NAME:0:5}" == "armv7" ]] && ARCH_NAME="armv7"
-    # [[ "${ARCH_NAME:0:5}" == "armhf" ]] && ARCH_NAME="armv7"
-    # [[ "${ARCH_NAME:0:5}" == "armel" ]] && ARCH_NAME="armv6"
-    #
-    # if [[ ! "${DC_ARCHS[*]}" =~ "${OS_NAME}-${ARCH_NAME}" ]]
-    # then
-    #   echo "Cannot install Docker-Compose for your system \"${OS_NAME}-${ARCH_NAME}\" because there is no suitable install candidate."
-    #   echo "You may be able to install it manually or compile from source; see https://github.com/docker/compose/releases"
-    # else
-    #   sudo curl -L "https://github.com/docker/compose/releases/download/v2.9.0/docker-compose-${OS_NAME}-${ARCH_NAME}" -o /usr/local/bin/docker-compose
-    #   # sudo curl -L "https://github.com/docker/compose/releases/download/latest/docker-compose-${OS_NAME}-${ARCH_NAME}" -o /usr/local/bin/docker-compose
-    #   sudo chmod +x /usr/local/bin/docker-compose
-    #   sudo ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
-    #   [[ -d "/usr/local/lib/docker/cli-plugins" ]] && sudo ln -s /usr/local/bin/docker-compose /usr/local/lib/docker/cli-plugins
-    #   [[ -d "/usr/lib/docker/cli-plugins" ]] && sudo ln -s /usr/local/bin/docker-compose /usr/lib/docker/cli-plugins
-    #   [[ -d "/usr/local/libexec/docker/cli-plugins" ]] && sudo ln -s /usr/local/bin/docker-compose /usr/local/libexec/docker/cli-plugins
-    #   [[ -d "/usr/libexec/docker/cli-plugins" ]] && sudo ln -s /usr/local/bin/docker-compose /usr/libexec/docker/cli-plugins
-      if docker-compose version
-      then
-        echo "Docker-compose was installed successfully."
-      else
-        echo "Docker-compose was not installed correctly - you may need to do this manually."
-      fi
-    # fi
+    if docker-compose version
+    then
+      echo "docker-compose was installed successfully."
+    else
+      echo "docker-compose was not installed correctly - you may need to do this manually."
+    fi
 fi
 
 # Now make sure that libseccomp2 >= version 2.4. This is necessary for Bullseye-based containers
