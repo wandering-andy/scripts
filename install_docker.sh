@@ -106,7 +106,7 @@ else
     echo "Installing Docker-compose... "
 
     # new method --get the plugin through apt. This means that it will be maintained through package upgrades in the future
-    sudo apt install -y docker-compose-plugin
+    sudo apt install -y docker-compose
     echo "alias docker-compose=\"docker compose\"" >> ~/.bash_aliases
     source ~/.bash_aliases
 
