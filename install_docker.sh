@@ -30,7 +30,6 @@ echo "- log in again"
 echo "- re-run this script using the same command as you did before"
 echo
 
-# I wonder if this can tell whether or not Docker has been installed via snap
 echo "We will now continue and install Docker."
 echo -n "Checking for an existing Docker installation... "
 if which docker >/dev/null 2>&1
@@ -107,7 +106,6 @@ else
     echo "not found!"
     echo "Installing Docker-compose... "
 
-    # new method --get the plugin through apt. This means that it will be maintained through package upgrades in the future
     sudo apt install -y docker-compose
     echo "alias docker-compose=\"docker compose\"" >> ~/.bash_aliases
     source ~/.bash_aliases
