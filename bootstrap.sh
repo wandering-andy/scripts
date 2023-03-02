@@ -18,9 +18,10 @@ echo "${USER} ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/90-"${USER}"-pri
 sudo chmod 0440 /etc/sudoers.d/90-"${USER}"-privileges
 echo "done!"
 echo
+#apt doesn't like scripts I guess?
 echo "Updating package repositories..."
-sudo apt update -qq -y && sudo apt upgrade -qq -y >/dev/null
+sudo apt-get update -qq -y && sudo apt upgrade -qq -y >/dev/null
 echo "Installing packages..."
-sudo apt install -qq -y ${PKGS} >/dev/null
+sudo apt-get install -qq -y ${PKGS} >/dev/null
 echo "Installing tailscale..."
 curl -fsSL https://tailscale.com/install.sh | sh
