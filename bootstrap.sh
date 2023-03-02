@@ -1,7 +1,7 @@
 #!/bin/bash
 #shellcheck shell=bash external-sources=false disable=SC1090,SC2164
 # bootstrap.sh -- Raspbian or Ubuntu based server prep
-# Usage: curl -s https://raw.githubusercontent.com/wandering-andy/docker-install/dev/docker-install.sh | sh
+# Usage: curl -s https://raw.githubusercontent.com/wandering-andy/scripts/main/bootstrap.sh | sh
 #
 
 USER=andy
@@ -20,7 +20,7 @@ echo "done!"
 echo
 #apt doesn't like scripts I guess?
 echo "Updating package repositories..."
-sudo apt-get update -q -y && sudo apt-get upgrade -qq -y >/dev/null
+sudo apt-get update -q -y && sudo apt-get upgrade -q -y >/dev/null
 echo "Installing packages..."
 sudo apt-get install -q -y ${PKGS} >/dev/null
 echo "Installing tailscale..."
