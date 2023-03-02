@@ -20,7 +20,7 @@ echo "done!"
 echo
 #apt doesn't like scripts I guess?
 echo "Updating package repositories..."
-sudo apt-get update -q -y && sudo apt upgrade -qq -y >/dev/null
+sudo apt-get update -q -y && sudo apt-get upgrade -qq -y >/dev/null
 echo "Installing packages..."
 sudo apt-get install -q -y ${PKGS} >/dev/null
 echo "Installing tailscale..."
