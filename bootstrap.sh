@@ -5,7 +5,7 @@
 #
 
 USER=andy
-PKGS=git
+PKGS="git fish starship xfdesktop4 openbox xfce-panel xfce4-settings xfce4-power-manager xfce4-session xfconf xfce4-notifyd thunar xfce4-cpufreq-plugin xfce4-datetime-plugin xfce4-diskperf-plugin xfce4-netload-plugin xfce4-systemload-plugin xfce4-wavelan-plugin xfce4-weather-plugin thunar-archive-plugin xfce4-taskmanager xfce4-appfinder xfwm4-themes"
 
 if [[ "$EUID" == 0 ]]; then
     echo "Running as root. Creating user ${USER}"
@@ -23,5 +23,13 @@ echo "Updating package repositories..."
 sudo apt-get update -q -y && sudo apt-get upgrade -q -y >/dev/null
 echo "Installing packages..."
 sudo apt-get install -q -y ${PKGS} >/dev/null
+
+echo "Clone KIAUH"
+cd ~ && git clone https://github.com/dw-0/kiauh.git
+
 echo "Installing tailscale..."
 curl -fsSL https://tailscale.com/install.sh | sh
+tailscale set --ssh --operator=${USER}
+tailscale login --qr
+
+
